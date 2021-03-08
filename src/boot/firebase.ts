@@ -15,6 +15,7 @@ export default boot(({ store }) => {
       const currentUser: User = new User(
         user.uid,
         user.email!,
+        user.displayName!,
         user.emailVerified
       );
       store.commit("firebase/setUser", currentUser);

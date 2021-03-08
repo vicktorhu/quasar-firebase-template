@@ -26,6 +26,7 @@
             color="accent"
             label="Profile"
             to="/profile/"
+            v-close-popup
           />
         </div>
         <div>
@@ -34,6 +35,7 @@
             color="accent"
             label="Logout"
             @click="logout"
+            v-close-popup
           />
         </div>
         <div>
@@ -52,6 +54,7 @@
             color="accent"
             label="Login"
             to="/auth/login/"
+            v-close-popup
           />
         </div>
         <div>
@@ -60,6 +63,7 @@
             color="accent"
             label="Register"
             to="/auth/register/"
+            v-close-popup
           />
         </div>
         <div>
@@ -90,7 +94,7 @@ export default defineComponent({
     const userName = computed(() => {
       const user: User = store.state.firebase.currentUser;
       if (user != null) {
-        return user.identifier;
+        return user.displayName;
       } else {
         return "";
       }
