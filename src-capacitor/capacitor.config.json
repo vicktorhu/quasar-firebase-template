@@ -1,0 +1,7 @@
+{
+  "appId": "org.invent.quasarfirebase",
+  "appName": "Quasar Firebase Template",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Quasar Firebase Template</string>
+    <string name="title_activity_main">Quasar Firebase Template</string>
+    <string name="package_name">org.invent.quasarfirebase</string>
+    <string name="custom_url_scheme">org.invent.quasarfirebase</string>
+</resources>

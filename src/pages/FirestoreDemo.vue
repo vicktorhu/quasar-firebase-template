@@ -14,7 +14,7 @@
       <div class="row" v-for="post in posts" :key="post.id">
         <div class="columns q-gutter-md">
           <div class="row q-gutter-md">
-            <div>{{ post.uid }}</div>
+            <div class="text-primary">{{ post.uid }}:</div>
             <div>{{ post.text }}</div>
           </div>
         </div>
@@ -32,7 +32,6 @@ import { Post } from "components/models";
 export default defineComponent({
   setup() {
     const db = firebase.firestore();
-    const auth = firebase.auth();
 
     const currentUser = computed(() => useStore().state.firebase.currentUser);
 
@@ -62,7 +61,6 @@ export default defineComponent({
         .get()
         .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
-            // console.log(doc.id, " => ", doc.data());
             const post: Post = new Post(
               doc.id,
               doc.data().uid,
@@ -75,9 +73,6 @@ export default defineComponent({
 
     onMounted(() => {
       loadData();
-      // window.setInterval(() => {
-      //   loadData();
-      // }, 5000);
     });
 
     return { currentUser, input, post, posts };
