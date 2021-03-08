@@ -10,10 +10,12 @@
 import { defineComponent } from "vue";
 import firebase from "firebase/app";
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   setup() {
     const store = useStore();
+    const router = useRouter();
 
     const getUser = () => {
       console.log(
@@ -23,6 +25,7 @@ export default defineComponent({
 
     const logout = () => {
       store.dispatch("firebase/logout");
+      router.push("/");
     };
 
     const test = () => {

@@ -8,7 +8,7 @@ const routes: RouteRecordRaw[] = [
       { path: "", component: () => import("pages/Index.vue") },
       { path: "login", component: () => import("pages/auth/Login.vue") },
       { path: "storetest", component: () => import("pages/StoreTest.vue") },
-      { path: "firestoretest", component: () => import("pages/FirestoreTest.vue") },
+      { path: "firestore", component: () => import("src/pages/FirestoreDemo.vue") },
     ],
   },
 

@@ -11,18 +11,23 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title> Quasar App </q-toolbar-title>
+        <q-toolbar-title> Quasar Firebase Template </q-toolbar-title>
 
         <!-- <div>Quasar v{{ $q.version }}</div> -->
-        <login-button :userName="username" />
+        <auth-dialog />
         <div></div>
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" show-if-above class="bg-grey-10">
+    <q-drawer
+      v-model="leftDrawerOpen"
+      elevated
+      show-if-above
+      :class="darkMode.sidebar"
+    >
       <q-list>
-        <q-item-label header class="text-grey-1">
-          Essential Links
+        <q-item-label header class="text-primary">
+          Quasar Firebase Template
         </q-item-label>
 
         <EssentialLink
@@ -31,6 +36,15 @@
           v-bind="link"
         />
       </q-list>
+      <div class="q-pa-md">
+        <q-btn
+          style="width: 100%"
+          :class="darkMode.class"
+          :icon="darkMode.icon"
+          :label="darkMode.text"
+          @click="darkModeToggle"
+        />
+      </div>
     </q-drawer>
 
     <q-page-container>
@@ -41,7 +55,7 @@
 
 <script lang="ts">
 import EssentialLink from "components/EssentialLink.vue";
-import LoginButton from "components/LoginButton.vue";
+import AuthDialog from "src/components/AuthDialog.vue";
 
 const linksList = [
   {
@@ -61,35 +75,41 @@ const linksList = [
   },
 ];
 
-import { defineComponent, ref } from "vue";
-import firebase from "firebase/app";
+import { defineComponent, ref, computed } from "vue";
+import { useQuasar } from "quasar";
 
 export default defineComponent({
   name: "MainLayout",
 
   components: {
     EssentialLink,
-    LoginButton,
+    AuthDialog,
   },
 
   setup() {
     const leftDrawerOpen = ref(false);
 
-    let username = ref<string>("");
-
-    firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        username.value = user.email!;
-        console.log(`${user.email} is verified = ${user.emailVerified}`);
-      }
+    const $q = useQuasar();
+    const darkMode = computed(() => {
+      return {
+        icon: $q.dark.isActive ? "brightness_high" : "dark_mode",
+        class: $q.dark.isActive
+          ? "bg-primary text-grey-1"
+          : "bg-grey-10 text-grey-1",
+        text: $q.dark.isActive ? "Light" : "Dark",
+        sidebar: $q.dark.isActive ? "bg-grey-10" : "bg-grey-1",
+      };
     });
 
     return {
       essentialLinks: linksList,
       leftDrawerOpen,
-      username,
+      darkMode,
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
+      },
+      darkModeToggle() {
+        $q.dark.toggle();
       },
     };
   },
