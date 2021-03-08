@@ -60,18 +60,18 @@ import AuthDialog from "src/components/AuthDialog.vue";
 const linksList = [
   {
     title: "Home",
-    icon: "school",
+    icon: "cottage",
     link: "/",
   },
   {
-    title: "Login",
-    icon: "school",
-    link: "/login",
+    title: "Profile",
+    icon: "face",
+    link: "/profile/",
   },
   {
-    title: "Store Test",
-    icon: "school",
-    link: "/storetest",
+    title: "Firestore Demo",
+    icon: "fireplace",
+    link: "/firestore/",
   },
 ];
 

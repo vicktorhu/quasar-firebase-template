@@ -23,7 +23,7 @@
         <div>
           <q-btn
             class="dialogButtons text-grey-9"
-            color="secondary"
+            color="accent"
             label="Profile"
             to="/profile/"
           />
@@ -31,7 +31,7 @@
         <div>
           <q-btn
             class="dialogButtons text-grey-9"
-            color="secondary"
+            color="accent"
             label="Logout"
             @click="logout"
           />
@@ -49,17 +49,17 @@
         <div>
           <q-btn
             class="dialogButtons text-grey-9"
-            color="secondary"
+            color="accent"
             label="Login"
-            to="/login/"
+            to="/auth/login/"
           />
         </div>
         <div>
           <q-btn
             class="dialogButtons text-grey-9"
-            color="secondary"
+            color="accent"
             label="Register"
-            to="/register/"
+            to="/auth/register/"
           />
         </div>
         <div>
@@ -100,6 +100,7 @@ export default defineComponent({
 
     const logout = () => {
       store.dispatch("firebase/logout");
+      loginDialog.value = false;
       router.push("/");
     };
 
