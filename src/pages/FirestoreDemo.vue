@@ -2,7 +2,7 @@
   <div>
     <div v-if="currentUser != null">
       <div class="q-gutter-md q-pa-md">
-        <h5 class="q-mb-none text-primary">Firestore Test</h5>
+        <h5 class="q-mb-none text-primary">Firestore Demo</h5>
         <q-input v-model="input" type="text" label="Post" />
         <q-btn color="primary" label="Post" @click="post" />
       </div>

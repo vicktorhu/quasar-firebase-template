@@ -3,8 +3,5 @@
   "appName": "Quasar Firebase Template",
   "bundledWebRuntime": false,
   "npmClient": "npm",
-  "webDir": "www",
-  "server": {
-    "url": "http://192.168.2.21:8080"
-  }
+  "webDir": "www"
 }
