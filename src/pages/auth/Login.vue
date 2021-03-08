@@ -9,24 +9,18 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import { useStore } from "vuex";
 import firebase from "firebase/app";
 
 export default defineComponent({
   setup() {
+    const store = useStore();
+
     let email = ref<string>("test@test.com");
     let password = ref<string>("testtest");
 
     const signIn = () => {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(email.value, password.value)
-        .then((userCredential) => {
-          var user = userCredential.user;
-          console.log(user?.email);
-        })
-        .catch((error) => {
-          console.log(`${error.code} - ${error.message}`);
-        });
+      store.dispatch("firebase/login", { email: email.value, password: password.value });
     };
 
     const getUser = () => {

@@ -80,6 +80,7 @@ export default defineComponent({
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         username.value = user.email!;
+        console.log(`${user.email} is verified = ${user.emailVerified}`);
       }
     });
 

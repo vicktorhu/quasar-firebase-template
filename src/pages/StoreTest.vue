@@ -2,7 +2,7 @@
   <div>
     StoreTest
     <q-checkbox left-label v-model="firebaseProp" label="Orange" />
-    {{firebaseProp}}
+    {{ firebaseProp }}
   </div>
 </template>
 
@@ -16,10 +16,10 @@ export default defineComponent({
 
     const firebaseProp = computed({
       get: () => $store.state.firebase.prop,
-      set: val => {
-        $store.commit('firebase/updateProp', val)
-      }
-    })
+      set: (val) => {
+        $store.commit("firebase/updateProp", val);
+      },
+    });
 
     return { firebaseProp };
   },

@@ -1,8 +1,11 @@
-export interface Todo {
-  id: number;
-  content: string;
-}
+export class User {
+  uid: string;
+  identifier: string;
+  verified: boolean;
 
-export interface Meta {
-  totalCount: number;
+  constructor(uid: string, identifier: string, verified: boolean) {
+    this.uid = uid;
+    this.identifier = identifier;
+    this.verified = verified;
+  }
 }
