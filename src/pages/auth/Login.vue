@@ -1,8 +1,18 @@
 <template>
   <div class="q-gutter-md q-pa-md">
     <h5 class="q-mb-none text-primary">Login</h5>
-    <q-input v-model="email" type="text" label="Email" />
-    <q-input v-model="password" type="password" label="Password" />
+    <q-input
+      v-model="email"
+      type="text"
+      label="Email"
+      @keydown.enter="signIn"
+    />
+    <q-input
+      v-model="password"
+      type="password"
+      label="Password"
+      @keydown.enter="signIn"
+    />
     <q-btn color="primary" label="Login" @click="signIn" />
     <q-btn
       class="text-grey-10"

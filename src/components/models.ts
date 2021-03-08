@@ -16,3 +16,15 @@ export class User {
     this.verified = verified;
   }
 }
+
+export class Post {
+  id: string;
+  uid: string;
+  text: string;
+
+  constructor(id: string, uid: string, text: string) {
+    this.id = id;
+    this.uid = uid;
+    this.text = text;
+  }
+}

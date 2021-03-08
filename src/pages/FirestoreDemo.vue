@@ -10,18 +10,29 @@
     <div v-else>
       <h5 class="q-ma-md text-primary">Not Logged In</h5>
     </div>
+    <div>
+      <div class="row" v-for="post in posts" :key="post.id">
+        <div class="columns q-gutter-md">
+          <div class="row q-gutter-md">
+            <div>{{ post.uid }}</div>
+            <div>{{ post.text }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from "vue";
+import { defineComponent, ref, computed, onMounted } from "vue";
 import { useStore } from "vuex";
 import firebase from "firebase/app";
-import { User } from "components/models";
+import { Post } from "components/models";
 
 export default defineComponent({
   setup() {
     const db = firebase.firestore();
+    const auth = firebase.auth();
 
     const currentUser = computed(() => useStore().state.firebase.currentUser);
 
@@ -36,13 +47,40 @@ export default defineComponent({
         .then((docRef) => {
           console.log("Document written with ID: ", docRef.id);
           input.value = "";
+          loadData();
         })
         .catch((error) => {
           console.error("Error adding document: ", error);
         });
     };
 
-    return { currentUser, input, post };
+    const posts = ref<Post[]>([]);
+
+    const loadData = () => {
+      posts.value.length = 0;
+      db.collection("posts")
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            // console.log(doc.id, " => ", doc.data());
+            const post: Post = new Post(
+              doc.id,
+              doc.data().uid,
+              doc.data().text
+            );
+            posts.value!.push(post);
+          });
+        });
+    };
+
+    onMounted(() => {
+      loadData();
+      // window.setInterval(() => {
+      //   loadData();
+      // }, 5000);
+    });
+
+    return { currentUser, input, post, posts };
   },
 });
 </script>

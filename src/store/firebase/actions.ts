@@ -40,7 +40,7 @@ const actions: ActionTree<FirebaseStateInterface, StateInterface> = {
         .signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
           let user = userCredential.user;
-          Notify.create(`Welcome ${user?.email}`);
+          Notify.create(`Welcome ${user?.displayName}!`);
           resolve(true);
         })
         .catch(function (error) {
