@@ -1,5 +1,8 @@
 # Quasar Firebase Template 
 
+![Alt text](banner.png?raw=true "Title")
+
+
 A Quasar framework app template that preloaded with Firebase features. Written from scratch for the upcoming `Quasar v2`.
 
 Features:
