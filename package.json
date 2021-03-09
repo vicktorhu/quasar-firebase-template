@@ -16,7 +16,8 @@
     "build:pwa": "cross-env QENV=production quasar build -m pwa",
     "build:android": "cross-env QENV=production quasar build -m capacitor -T android",
     "build:ios": "cross-env QENV=production quasar build -m capacitor -T ios",
-    "build:elec": "cross-env QENV=production quasar build -m electron"
+    "build:elec": "cross-env QENV=production quasar build -m electron",
+    "sign:android": "jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore dist\\capacitor\\android\\apk\\release\\app-release-unsigned.apk alias_name && zipalign -v 4 dist\\capacitor\\android\\apk\\release\\app-release-unsigned.apk dist\\capacitor\\android\\apk\\release\\QuasarFirebaseTemplate-signed.apk"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
