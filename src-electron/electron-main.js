@@ -24,6 +24,7 @@ function createWindow () {
     }
   })
 
+  mainWindow.setMenuBarVisibility(false);
   mainWindow.loadURL(process.env.APP_URL)
 
   if (process.env.DEBUGGING) {
