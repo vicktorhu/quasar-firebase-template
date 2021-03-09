@@ -13,9 +13,13 @@ const actions: ActionTree<FirebaseStateInterface, StateInterface> = {
         .createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
           let user = userCredential.user;
-          user!.updateProfile({
-            displayName: name,
-          });
+          user!
+            .updateProfile({
+              displayName: name,
+            })
+            .then(() => {
+              commit("setUserNameAfterRegister", name);
+            });
           firebase
             .auth()
             .currentUser?.sendEmailVerification()

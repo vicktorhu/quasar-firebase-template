@@ -70,6 +70,15 @@
           <q-btn
             class="dialogButtons text-grey-9"
             color="accent"
+            label="Forget Password"
+            to="/auth/forget/"
+            v-close-popup
+          />
+        </div>
+        <div>
+          <q-btn
+            class="dialogButtons text-grey-9"
+            color="accent"
             label="Cancel"
             v-close-popup
           />

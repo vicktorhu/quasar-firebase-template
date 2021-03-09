@@ -3,7 +3,7 @@
     <h5 class="q-mb-none text-primary">Login</h5>
     <q-input
       v-model="email"
-      type="text"
+      type="email"
       label="Email"
       @keydown.enter="signIn"
     />
