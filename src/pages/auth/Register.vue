@@ -24,9 +24,9 @@ export default defineComponent({
     const store = useStore();
     const router = useRouter();
 
-    const name = ref<string>("Vicktor");
-    const email = ref<string>("vhutamadrive@gmail.com");
-    const password = ref<string>("testtest");
+    const name = ref<string>("");
+    const email = ref<string>("");
+    const password = ref<string>("");
 
     const signUp = () => {
       store
