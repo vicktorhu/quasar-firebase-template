@@ -1,38 +1,51 @@
 <template>
   <div>
-    <q-btn color="primary" label="Check User" @click="getUser" />
-    <q-btn color="primary" label="Logout" @click="logout" />
-    <q-btn color="primary" label="test" @click="test" />
+    <q-page class="column justify-start">
+      <div class="row justify-center q-my-xl">
+        <img alt="Quasar logo" src="~assets/logo-firebase.png" />
+      </div>
+      <div class="q-px-lg text-h2 text-center">Quasar Firebase Template</div>
+      <div class="q-px-lg q-mt-md text-h7 text-center">
+        By Vicktor Hutama (<a
+          target="_blank"
+          href="https://github.com/vicktorhu/quasar-firebase-template"
+          class="text-primary"
+          >vicktorhu</a
+        >) | Written for
+        <a
+          target="_blank"
+          href="https://github.com/vicktorhu/quasar-firebase-template"
+          class="text-primary"
+          >Quasar v2</a
+        >
+        with
+        <a
+          target="_blank"
+          href="https://v3.vuejs.org/guide/composition-api-introduction.html"
+          class="text-primary"
+          >Vue 3 Composition API</a
+        >
+        and
+        <a
+          target="_blank"
+          href="https://www.typescriptlang.org/docs/"
+          class="text-primary"
+          >Typescript</a
+        >
+      </div>
+    </q-page>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import firebase from "firebase/app";
-import { useStore } from "vuex";
-import { useRouter } from "vue-router";
 
 export default defineComponent({
   setup() {
-    const store = useStore();
-    const router = useRouter();
-
-    const getUser = () => {
-      console.log(
-        `${firebase.auth().currentUser?.email} is currently signed in`
-      );
-    };
-
-    const logout = () => {
-      store.dispatch("firebase/logout");
-      router.push("/");
-    };
-
-    const test = () => {
-      store.dispatch("firebase/test");
-    };
-
-    return { getUser, logout, test };
+    return {};
   },
 });
 </script>
+
+<style scoped>
+</style>
