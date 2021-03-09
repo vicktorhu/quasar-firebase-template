@@ -5,6 +5,8 @@
 
 A Quasar framework app template that preloaded with Firebase features. Written from scratch for the upcoming `Quasar v2`.
 
+Author: [Vicktor Hutama](https://github.com/vicktorhu/) 
+
 Features:
 - `Quasar v2` - [Documentation](https://next.quasar.dev/)
 - `Vue 3 Composition API` - [Documentation](https://v3.vuejs.org/guide/composition-api-introduction.html)
