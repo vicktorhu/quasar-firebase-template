@@ -3,6 +3,7 @@
 node_modules
 .quasar.env.json
 /.vscode
+*.keystore
 
 # Quasar core related directories
 .quasar
